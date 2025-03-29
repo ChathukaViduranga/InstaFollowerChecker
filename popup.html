@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram Follower Analyzer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: #f9f9f9;
+        min-width: 1200px; /* Larger popup width */
+        min-height: 800px; /* Larger popup height */
+      }
+      .container {
+        width: 100%;
+      }
+      .header {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .header h2 {
+        margin-bottom: 10px;
+      }
+      .header input[type="text"] {
+        width: calc(100% - 20px);
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .header button {
+        padding: 8px 12px;
+        width: 100%;
+        cursor: pointer;
+        border: none;
+        background-color: #020202;
+        color: white;
+        border-radius: 4px;
+        margin-bottom: 10px;
+      }
+      .columns {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      .column {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 10px;
+        max-height: 600px; /* Increased column height */
+        overflow-y: auto;
+      }
+      .column h3 {
+        margin-top: 0;
+        text-align: center;
+        font-size: 16px;
+      }
+      .user-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 3px 0;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+      }
+      .user-item:last-child {
+        border-bottom: none;
+      }
+      .arrow {
+        cursor: pointer;
+        font-size: 16px;
+        color: #020202;
+        margin-left: 10px;
+      }
+      /* Loader Overlay Styles */
+      .loader-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+      .spinner {
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #020202;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 2s linear infinite;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loader Overlay -->
+    <div class="loader-overlay" id="loader" style="display: none">
+      <div class="spinner"></div>
+    </div>
+    <div class="container">
+      <div class="header">
+        <h2>Instagram Follower Analyzer</h2>
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter your Instagram username"
+        />
+        <button id="analyzeBtn">Analyze</button>
+        <!-- Button to open the extension in a new tab -->
+        <button id="openTabBtn">Open as Tab</button>
+      </div>
+      <div class="columns">
+        <div class="column" id="followersColumn">
+          <h3>Followers (<span id="followersCount">0</span>)</h3>
+          <div id="followersList"></div>
+        </div>
+        <div class="column" id="followingColumn">
+          <h3>Following (<span id="followingCount">0</span>)</h3>
+          <div id="followingList"></div>
+        </div>
+        <div class="column" id="notFollowingBackColumn">
+          <h3>
+            Not Following You Back (<span id="notFollowingBackCount">0</span>)
+          </h3>
+          <div id="notFollowingBackList"></div>
+        </div>
+        <div class="column" id="fansColumn">
+          <h3>Fans (You Don't Follow Back) (<span id="fansCount">0</span>)</h3>
+          <div id="fansList"></div>
+        </div>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

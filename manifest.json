@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Instagram Follower Analyzer",
+  "version": "1.0",
+  "description": "View your Instagram followers, following, not following you back, and fans.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "permissions": ["activeTab", "tabs"],
+  "host_permissions": ["https://www.instagram.com/*"],
+  "web_accessible_resources": [
+    {
+      "resources": ["popup.html"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
