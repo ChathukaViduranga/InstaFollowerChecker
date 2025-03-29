@@ -1,15 +1,3 @@
-// Open as Tab Button Functionality
-document.getElementById("openTabBtn").addEventListener("click", () => {
-  const extensionUrl = chrome.runtime.getURL("popup.html");
-  chrome.tabs.create({ url: extensionUrl }, (newTab) => {
-    if (chrome.runtime.lastError) {
-      console.error("Error creating tab: ", chrome.runtime.lastError.message);
-    } else {
-      console.log("New tab created: ", newTab);
-    }
-  });
-});
-
 // Analyze Button Functionality with Loader Integration
 document.getElementById("analyzeBtn").addEventListener("click", async () => {
   // Show the loader

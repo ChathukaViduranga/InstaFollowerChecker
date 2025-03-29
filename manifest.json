@@ -4,8 +4,10 @@
   "version": "1.0",
   "description": "View your Instagram followers, following, not following you back, and fans.",
   "action": {
-    "default_popup": "popup.html",
     "default_icon": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
   },
   "permissions": ["activeTab", "tabs"],
   "host_permissions": ["https://www.instagram.com/*"],
